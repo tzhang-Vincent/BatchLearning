@@ -15,4 +15,4 @@ Project Description:
 
 4. Realized server frame building in Python and its interaction with Web UI written in html and javascripts
 
-![Final Design](https://github.com/tzhang-Vincent/BatchLearning/edit/master/FinalDesign.jpg)
+![Final Design](https://github.com/tzhang-Vincent/BatchLearning/edit/master/EXPO.jpg)
