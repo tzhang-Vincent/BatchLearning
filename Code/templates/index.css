@@ -1,0 +1,223 @@
+body {
+  background-color: #e7e6e6;
+}
+img {
+  width: 100%;
+}
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,dl,li,dt,dd {
+    /*字体设置*/
+	font-size: 14px;
+	font-family: "Microsoft Yahei",sans-serif;
+	color: #999999;
+	list-style: none; /* 去掉列表的原点 */
+	cursor: default; /* 默认鼠标 */
+}
+/*可选*/
+html,body {
+	width: 100%;
+	height: 100%;
+}
+/*行内块元素*/
+input,img {
+	margin: 0;
+	padding: 0;
+	border: 0 none;
+	outline-style: none;
+	vertical-align: bottom;
+}
+/*行内元素*/
+a,a:active,a:visited {
+    /*下划线和颜色*/
+	text-decoration: none;
+	color: #ffffff;
+}
+a:hover {
+	color: #ffffff;
+}
+textarea {
+	border: none; /* 边框清零 */
+	outline: none; /* 轮廓线清零 */
+	resize: none; /* 防止文本域被随意拖拽 */
+}
+
+i {
+	font-style: normal;  /*文字样式*/
+}
+
+.layout{
+	width: 100%;
+	overflow: hidden;
+}
+.close{
+	position: fixed;
+	top: 15px;
+	left: 10px;
+	font-size: 26px;
+	cursor: pointer;
+}
+/*头部*/
+.w_0{
+	width: 0;
+}
+.left_box {
+	transition:all 0.5s;
+	width: 200px;
+	border: 1px solid #294886;
+	background: -webkit-radial-gradient(right bottom, farthest-corner, #b4c5e3, #2d4676);
+	/* Safari 5.1 - 6.0 */
+	background: -o-radial-gradient(right bottom, farthest-corner, #b4c5e3, #2d4676);
+	/* Opera 11.6 - 12.0 */
+	background: -moz-radial-gradient(right bottom, farthest-corner, #b4c5e3, #2d4676);
+	/* Firefox 3.6 - 15 */
+	background: radial-gradient(right bottom, farthest-corner, #b4c5e3, #2d4676);
+	/* 标准的语法（必须放在最后） */
+}
+.left_box .s_title {
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+}
+.left_box ul {
+  margin-top: 13px;
+  padding-left: 13px;
+}
+.left_box ul li {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  margin: 13px 0;
+}
+.left_box ul li a {
+  display: block;
+}
+.left_box ul li a i {
+  width: 38px;
+  height: 35px;
+  display: inline-block;
+  margin-right: 12px;
+}
+.right_box {
+  height: 100vh;
+  background-color: #e7e6e6;
+}
+.right_box .s_title {
+  padding-left: 13px;
+  height: 55px;
+  line-height: 55px;
+  font-size: 18px;
+  color: #444444;
+  background-color: #ffffff;
+}
+.right_box .items {
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+.right_box .items .item {
+  width: 98%;
+  padding-left: 2%;
+  margin-bottom: 10px;
+  height: calc(33.3% - 10px);
+  border-radius: 20px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.right_box .items .item .title {
+  padding-top: 10px;
+  height: 30px;
+  line-height: 30px;
+  color: #666666;
+}
+.right_box .items .item .time{
+	width: 30%;
+	text-align: right;
+	height: 160px;
+	line-height: 100px;
+	color: #999999;
+}
+.right_box .items .item .s_biao{
+	position: relative;
+	width: 70%;
+	height: 160px;
+}
+.right_box .items .item .s_biao .zhu{
+	width: 160px;
+	height: 160px;
+	margin: 0 auto;
+}
+.right_box .items .item .s_biao .cont{
+	position: absolute;
+	top: 70px;
+	left: calc(50% - 20px);
+	color: #333333;
+}
+.right_box .items .item .health .s_pic{
+	width: 25%;
+	height: 52px;
+	margin-top: 50px;
+	text-align: right;
+	margin-right: 5%;
+}
+.right_box .items .item .health .s_pic img{
+	width: 78px;
+	height: 52px;
+}
+.right_box .items .item .health .s_biao{
+	width: 40%;
+}
+.right_box .items .item .health .s_biao p{
+	height: 50px;
+	line-height: 50px;
+	font-size: 20px;
+}
+.container {
+  width: 100%;
+  background-color: #ddd;
+}
+.skills {
+  text-align: right;
+  line-height: 40px;
+  color: white;
+}
+.html {background-color: #375692;}
+
+.right_box .items .item .health .message{
+	width: 50px;
+	height: 37px;
+	background: url(../images/pic_16.jpg);
+	line-height: 37px;
+	text-align: center;
+	margin-top: 50px;
+	margin-left: 3%;
+}
+.right_box .items .item .data p{
+	line-height: 50px;
+	text-indent: 4em;
+	font-size: 18px;
+}
+.Training p{
+	font-size: 18px;
+	line-height: 40px;
+}
+.Training input{
+	border: 1px solid #cccccc;
+	width: 90%;
+	height: 20px;
+	padding: 5px;
+	margin: 15px 0;
+}
+.Training button{
+	width: 80px;
+	height: 30px;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	background: transparent;
+	cursor: pointer;
+}
+.Status{
+	width: 76px;
+	height: 73px;
+	margin: 20px auto;
+	cursor: pointer;
+}

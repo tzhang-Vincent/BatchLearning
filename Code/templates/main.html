@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}aaa{% endblock %}
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+            <h1 class="text-left text-info">
+                Control
+            </h1>
+        </div>
+        <div class="span4">
+             <button class="btn btn-large" type="button">Start/Stop</button>
+        </div>
+    </div>
+</div>
+{% block page_content %}
+{{ wtf.quick_form(form) }}
+<div class="page-header">
+    <p>The current train time is {{name}}<p>
+    <p>The current train method is {{algorithm}}<p>
+    <a href="{{url_for('train')}}"> train </a>
+
+</div>
+
+
+{% endblock %}

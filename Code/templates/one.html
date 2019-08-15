@@ -1,0 +1,163 @@
+{% extends "bootstrap/base.html"%} 
+{% block doc -%}
+<!DOCTYPE html>            
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}     
+  <head>
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    {%- endblock metas %}
+
+    {% block styles %}
+    {{super()}}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href={{url_for('static',filename='css/index.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename='css/ui.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename='css/reset.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename='css/font-awesome.min.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename='css/meta.css')}}>
+    {% endblock %}
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+    {% block navbar %}
+
+    {%- endblock navbar %}
+
+
+
+    {% block content -%}
+    <div class="close">
+    <i class='fa fa-align-justify'></i>
+  </div>
+  <script type="text/javascript">
+    let close=true;
+    $('.close').click(function(){
+      if(close){
+        $('.left_box').css('width',0);
+      }else{
+        $('.left_box').css('width','200px');
+      }
+      close=!close;
+    })
+  </script>
+<div class="ui-flex layout">
+    <div class="left_box">
+        <div class="s_title">Cyberinsight</div>
+        <ul>
+            <li><a href="index.html"><i><img src="./images/pic_03.png" alt=""></i>Main</a></li>
+            <li><a href="Configuration.html"><i><img src="./images/pic_06.png" alt=""></i>Configuration</a></li>
+            <li><a href="#"><i><img src="./images/pic_09.png" alt=""></i>History</a></li>
+            <li><a href="#"><i><img src="./images/pic_03.png" alt=""></i>About</a></li>
+        </ul>
+    </div>
+    <div class="ui-flex-1 right_box">
+        <div class="s_title">Adaptive Motor Monitoring System Based on Machine Learning Batch Training</div>
+        <div class="items">
+            <div class="item">
+                <div class="title">Training Process</div>
+                <div class="ui-flex ui-flex-wrap">
+                    <div class="time">Total train time:1000</div>
+                    <div class="s_biao">
+                        <div class="zhu" id="container" style="height: 100%"></div>
+                        <div class="cont">73%</div>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+              var dom = document.getElementById("container");
+              var myChart = echarts.init(dom);
+              var app = {};
+              option = null;
+              app.title = '环形图';
+
+              option = {
+                  // tooltip: {
+                  //     trigger: 'item',
+                  //     formatter: "{a} <br/>{b}: {c} ({d}%)"
+                  // },
+                  color : ['#3d568e','#d8e3ea'],
+                  series: [
+                      {
+                          name:'访问来源',
+                          type:'pie',
+                          radius: ['50%', '70%'],
+                          avoidLabelOverlap: false,
+                          label: {
+                              normal: {
+                                  show: false,
+                                  position: 'center'
+                              },
+                              // emphasis: {
+                              //     show: true,
+                              //     textStyle: {
+                              //         fontSize: '14',
+                              //         fontWeight: 'bold'
+                              //     }
+                              // }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false
+                              }
+                          },
+                          data:[
+                              {value:720, name:'72%'},
+                              {value:280, name:'28%'},
+                          ]
+                      }
+                  ]
+              };
+              ;
+              if (option && typeof option === "object") {
+                  myChart.setOption(option, true);
+              }
+            </script>
+
+            <div class="item healths">
+                <div class="title">Health Score</div>
+                <div class="ui-flex ui-flex-wrap health">
+                    <div class="s_pic"><img src="./images/pic_13.jpg" alt=""></div>
+                    <div class="s_biao">
+                        <p>Health Score</p>
+                        <div class="container">
+                          <div class="skills html" style="width:90%;">90%</div>
+                        </div>
+                    </div>
+                    <div class="message">
+                        80
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="title">Data</div>
+                <div class="data">
+                    <p>Threshold: 1000</p>
+                    <p>Current Q: 990</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {%- endblock content %}
+
+    {% block scripts %}
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/echarts.common.min.js"></script>
+    {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}

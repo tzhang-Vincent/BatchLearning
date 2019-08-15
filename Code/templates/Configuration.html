@@ -1,0 +1,202 @@
+{% extends "bootstrap/base.html"%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block doc -%}
+<!DOCTYPE html>            
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}     
+  <head>
+    {%- block head %}
+    <title>{% block title %}Configuration{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    {%- endblock metas %}
+
+        {% block styles %}
+    {{super()}}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/ui.css')}}"">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/reset.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/meta.css')}}">
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="{{url_for('static',filename='js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/echarts.common.min.js')}}"></script>
+    {%- endblock scripts %}
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+    
+    {% block navbar %}
+
+    {%- endblock navbar %}
+
+
+
+    {% block content -%}
+    <div class="close">
+    <i class='fa fa-align-justify'></i>
+  </div>
+  <script type="text/javascript">
+    let close=true;
+    $('.close').click(function(){
+      if(close){
+        $('.left_box').css('width',0);
+      }else{
+        $('.left_box').css('width','200px');
+      }
+      close=!close;
+    })
+  </script>
+<div class="ui-flex layout">
+    <div class="left_box">
+        <div class="s_title">Cyberinsight</div>
+        <ul>
+            <li><a href="{{url_for('Main',train_flag=0)}}"><i><img src="{{url_for('static',filename='images/pic_03.png')}}" alt=""></i>Main</a></li>
+            <li><a href="{{url_for('Configuration')}}"><i><img src="{{url_for('static',filename='images/pic_06.png')}}" alt=""></i>Configuration</a></li>
+            <li><a href="#"><i><img src="{{url_for('static',filename='images/pic_09.png')}}" alt=""></i>History</a></li>
+            <li><a href="#"><i><img src="{{url_for('static',filename='images/pic_03.png')}}" alt=""></i>About</a></li>
+        </ul>
+    </div>
+    <div class="ui-flex-1 right_box">
+        <div class="s_title">Adaptive Motor Monitoring System Based on Machine Learning Batch Training</div>
+        <div class="items">
+            <div class="item">
+                <form action="Configuration" method="POST">
+                <div class="title">Training Time</div>
+                <div class="Training">
+                    <!-- {{ wtf.quick_form(form) }} -->
+                  <p>Please input train time</p>
+                  <input type="text" name="train_time_input"/><br>
+                  <button>Submit</button>
+                  <p>The train time is {{train_time}}</p>
+                </div>
+            </div>
+        </form>
+
+            <div class="item">
+                <div class="title"></div>
+                <center><a href="{{url_for('Main',train_flag=1)}}" class="btn btn-success btn-lg btn" role="button">Begin Training</a></center>
+                <div class="s_biao">
+                        <div class="zhu" id="container" style="height: 100%"></div>
+                        <div class="cont"></div>
+                    </div>
+                </div>
+                
+            <script type="text/javascript">
+              var dom = document.getElementById("container");
+              var myChart = echarts.init(dom);
+              var app = {};
+              option = null;
+              app.title = '环形图';
+
+              option = {
+                  // tooltip: {
+                  //     trigger: 'item',
+                  //     formatter: "{a} <br/>{b}: {c} ({d}%)"
+                  // },
+                  color : ['#3d568e','#d8e3ea'],
+                  series: [
+                      {
+                          name:'访问来源',
+                          type:'pie',
+                          radius: ['50%', '70%'],
+                          avoidLabelOverlap: false,
+                          label: {
+                              normal: {
+                                  show: false,
+                                  position: 'center'
+                              },
+                              // emphasis: {
+                              //     show: true,
+                              //     textStyle: {
+                              //         fontSize: '14',
+                              //         fontWeight: 'bold'
+                              //     }
+                              // }
+                          },
+                          labelLine: {
+                              normal: {
+                                  show: false
+                              }
+                          },
+                          data:[
+                              {value:'0', name:'100%'},
+                              {value:'100', name:'0%'},
+                          ]
+                      }
+                  ]
+              };
+              ;
+
+              if (option && typeof option === "object") {
+                  myChart.setOption(option, true);
+              }
+              console.log(option.series[0].data[0])  
+
+
+              var t = setInterval(function(){
+                   //获得图表的options对象  
+                   var options = myChart.getOption(); 
+                   //通过Ajax获取数据  
+                   $.ajax({  
+                       type : "post",  
+                       async : false, //同步执行  
+                       url : '/progress',  
+                       data : {},  
+                       dataType : "json", //返回数据形式为json  
+                       success : function(result) { 
+                           if (result) {  
+                               options.series[0].data[0] = result.progress;  
+                               options.series[0].data[1] = result.left;  
+                               myChart.setOption(options);
+                               console.log(result)
+                           }  
+                       } 
+                   });  
+               }
+               , 100);
+
+// var t = setInterval(function(){
+//                 $.get('/progress',function (data) {
+//                   myChart.setOption({
+//                     series: [{
+//                         data: [
+//                             {value: data.progress,name:'100%'},
+//                             {value: data.left,name:'0%'}
+//                         ]}
+//                     ]
+//                   });
+//                 });
+//               }, 1000);
+
+            </script>
+            <div class="item">
+                <div class="title">Status</div>
+                <div class="Status">
+                  <!-- <img src="./images/btn.JPG" alt=""> -->
+                  <li><a href="Configuration"><i><img src="{{url_for('static',filename='images/btn.JPG')}}" alt=""></i></a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    {%- endblock content %}
+
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}
+

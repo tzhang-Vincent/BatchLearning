@@ -1,0 +1,60 @@
+/*// 弹性布局公共*/
+  .ui-nowrap{white-space:nowrap;}
+  .ui-flex-wrap {flex-wrap: wrap;}
+  .ui-flex {display: flex;}
+  .ui-flex-1 {flex: 1;}
+  .ui-jtop {justify-content: flex-start;}
+  .ui-jright {justify-content: flex-end;}
+  .ui-cont-rl {justify-content: space-between;}
+  .ui-cont-sa {justify-content: space-around;}
+  .ui-jcenter {justify-content: center;}
+  .ui-cont-center {align-items: center;}
+  .ui-cont-flex-start {align-items: flex-start;}
+  .ui-cont-flex-end {align-items: flex-end;}
+  .ui-cont-baseline {align-items: baseline;}
+  .ui-inline-block {display: inline-block;}
+  .ui-row {flex-direction: row;}
+  .ui-column {flex-direction: column;}
+  .box_s {display: flex;flex-direction: column;}
+  .ui-cous {cursor: pointer;}
+  .ui-ellipsis{
+    overflow:hidden; /*//超出的文本隐藏*/
+    text-overflow:ellipsis; /*//溢出用省略号显示*/
+    white-space:nowrap; /*//溢出不换行*/
+  }
+  .ui-font-center {text-align: center;}
+  .ui-font-right {text-align: right;}
+  .ui-font-bold {font-weight: bold;}
+  .ui-fl{float:left;}
+  .ui-fr{float:right;}
+  .ui-clearfix:after {
+    content: "200B";
+    display: block;
+    height: 0;
+    font-size: 0;
+    clear: both;
+  }
+  .ui-clearfix {
+    *zoom: 1;
+  }
+
+  ::-webkit-scrollbar{
+    width:8px;
+    height:8px;
+  }
+
+/*---滚动条默认显示样式--*/
+  ::-webkit-scrollbar-thumb{
+    background-color:#d8d8d8;
+    height:50px;
+    outline-offset:-2px;
+    outline:2px solid #fff;
+    -webkit-border-radius:5px;
+    border: 0px solid #fff;
+  }
+
+/*---滚动框背景样式--*/
+  ::-webkit-scrollbar-track-piece{
+    background-color:#eaeaea;
+    -webkit-border-radius:0;
+  }
