@@ -1,7 +1,9 @@
 # BatchLearning
 Adaptive Motor Monitoring System Based on Machine Learning Batch Training
 
-Zhang Ting works as a project manager
+Project manager: Zhang Ting
+
+Group member: Zhou Chenxin, Cheng Yiwei, Zhu Junru
 
 Project Description:
 
